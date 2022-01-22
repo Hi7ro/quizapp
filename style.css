@@ -14,6 +14,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+.mainCard{
+  background-color: lightgrey;
+}
+.answerCard:hover{
+  background-color: lightblue;
+
+}
 
 .mainQuiz {
   width: 35rem;
