@@ -69,8 +69,10 @@ function showQuestion() {
   $('answer_4').innerHTML = question['answer_4'];
 }
 
-function answer() {
-
+function answer(selection) {
+  questions['right_answer'] = $('answer_1')
+  if ($('answer_1')) document.getElementsByClassName('answerCard')[0].style.background = 'lightgreen';
+  if ($('answer_2')) document.getElementsByClassName('answerCard')[1].style.background = 'orange';
 }
 
 function nextQuestion() {

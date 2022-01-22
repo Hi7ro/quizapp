@@ -14,12 +14,14 @@ body {
   justify-content: center;
   align-items: center;
 }
-.mainCard{
+
+.mainCard {
   background-color: lightgrey;
 }
-.answerCard:hover{
-  background-color: lightblue;
 
+.answerCard:hover {
+  background-color: lightcoral;
+  cursor: pointer;
 }
 
 .mainQuiz {
