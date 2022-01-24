@@ -50,7 +50,7 @@ let questions = [
 let currentQuestion = 0;
 
 function $(id) {
-  return document.getElementById(id);
+  return document.getElementById(id); // to shorten the document.get.. instead write $('id')
 }
 
 function init() {
@@ -69,8 +69,8 @@ function showQuestion() {
   $('answer_4').innerHTML = question['answer_4'];
 }
 
-function answer(selection) {
-  questions['right_answer'] = $('answer_1')
+function answer(selection) { // answer you choose
+  questions['right_answer'] = $('answer_1') //todo: still need to fix it
   if ($('answer_1')) document.getElementsByClassName('answerCard')[0].style.background = 'lightgreen';
   if ($('answer_2')) document.getElementsByClassName('answerCard')[1].style.background = 'orange';
 }
