@@ -61,8 +61,8 @@ function init() {
 }
 
 function showQuestion() {
-  let question = questions[currentQuestion];
-  $('question').innerHTML = question['question'];
+  let question = questions[currentQuestion]; // From Object the first object 0
+  $('question').innerHTML = question['question']; // DOM Element, First question = the first Object/object keyword 'question'
   $('answer_1').innerHTML = question['answer_1'];
   $('answer_2').innerHTML = question['answer_2'];
   $('answer_3').innerHTML = question['answer_3'];
@@ -70,9 +70,14 @@ function showQuestion() {
 }
 
 function answer(selection) { // answer you choose
-  questions['right_answer'] = $('answer_1') //todo: still need to fix it
-  if ($('answer_1')) document.getElementsByClassName('answerCard')[0].style.background = 'lightgreen';
-  if ($('answer_2')) document.getElementsByClassName('answerCard')[1].style.background = 'orange';
+  let question = questions[currentQuestion];
+  let selectedQuestionNumber = selection.slice(-1)
+
+  if (selectedQuestionNumber == question['right_answer']) {
+    console.log('right answer boya')
+  } else {
+    console.log('wrong turn boy')
+  }
 }
 
 function nextQuestion() {
