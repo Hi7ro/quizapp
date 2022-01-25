@@ -35,7 +35,7 @@ let questions = [
     "answer_2": "Python",
     "answer_3": "C++",
     "answer_4": "Java",
-    "right_answer": 0
+    "right_answer": 2
   },
 
   {
@@ -54,32 +54,54 @@ function $(id) {
 }
 
 function init() {
-  $('questionsStart').innerHTML;
   $('questionsEnd').innerHTML = questions.length;
-
   showQuestion();
 }
 
 function showQuestion() {
   let question = questions[currentQuestion]; // From Object the first object 0
-  $('question').innerHTML = question['question']; // DOM Element, First question = the first Object/object keyword 'question'
-  $('answer_1').innerHTML = question['answer_1'];
-  $('answer_2').innerHTML = question['answer_2'];
-  $('answer_3').innerHTML = question['answer_3'];
-  $('answer_4').innerHTML = question['answer_4'];
-}
 
-function answer(selection) { // answer you choose
-  let question = questions[currentQuestion];
-  let selectedQuestionNumber = selection.slice(-1)
-
-  if (selectedQuestionNumber == question['right_answer']) {
-    console.log('right answer boya')
+  if (currentQuestion >= questions.length) {
+    // End Screen
   } else {
-    console.log('wrong turn boy')
+    $('questionNumber').innerHTML = currentQuestion + 1;
+    $('question').innerHTML = question['question']; // DOM Element, First question = the first Object/object keyword 'question'
+    $('answer_1').innerHTML = question['answer_1'];
+    $('answer_2').innerHTML = question['answer_2'];
+    $('answer_3').innerHTML = question['answer_3'];
+    $('answer_4').innerHTML = question['answer_4'];
   }
 }
 
-function nextQuestion() {
+function answer(selection) { // answer that you choose
+  //todo: show right answer only when u got 2 wrong answers
+  let question = questions[currentQuestion];
+  let selectedQuestionNumber = selection.slice(-1);
+  let IdRightAnswer = `answer_${question['right_answer']}`;
 
+  if (selectedQuestionNumber == question['right_answer']) {
+    $(selection).parentNode.classList.add('bg-success');
+  } else {
+    $(selection).parentNode.classList.add('bg-danger');
+    $(IdRightAnswer).parentNode.classList.add('bg-success');
+  }
+  $('button').disabled = false;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  resetAnswers();
+  showQuestion();
+  $('button').disabled = true;
+}
+
+function resetAnswers() {
+  $('answer_1').parentNode.classList.remove('bg-success');
+  $('answer_1').parentNode.classList.remove('bg-danger');
+  $('answer_2').parentNode.classList.remove('bg-success');
+  $('answer_2').parentNode.classList.remove('bg-danger');
+  $('answer_3').parentNode.classList.remove('bg-success');
+  $('answer_3').parentNode.classList.remove('bg-danger');
+  $('answer_4').parentNode.classList.remove('bg-success');
+  $('answer_4').parentNode.classList.remove('bg-danger');
 }
