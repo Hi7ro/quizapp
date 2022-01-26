@@ -1,5 +1,4 @@
-"use strict"
-
+'use strict'
 let questions = [
 
   {
@@ -50,6 +49,11 @@ let questions = [
 let currentQuestion = 0;
 let rightAnswers = 0;
 
+let AUDIO_SUCCESS = new Audio('./assets/success.mp3');
+let AUDIO_FAILED = new Audio('./assets/failed.mp3');
+let AUDIO_SUCCESS_SHORT = new Audio('./assets/shortSuccess.mp3')
+let AUDIO_FAILED_SHORT = new Audio('./assets/wrong.mp3')
+
 function $(id) {
   return document.getElementById(id); // to shorten the document.get.. instead write $('id')
 }
@@ -57,17 +61,15 @@ function $(id) {
 function init() {
   $('questionsEnd').innerHTML = questions.length;
   showQuestion();
-  endScreen();
 }
 
 function showQuestion() {
-  let question = questions[currentQuestion]; // From Object the first object 0
-
+  let question = questions[currentQuestion]; // From Object the first object 
   if (currentQuestion >= questions.length) {
-    $('endScreen').style = "";
-    $('quizBody').style = "display: none;"
-    $('quizImg').src = './img/trophy.png';
+    showEndScreen();
+    progress();
   } else {
+    progress();
     $('questionNumber').innerHTML = currentQuestion + 1;
     $('question').innerHTML = question['question']; // DOM Element, First question = the first Object/object keyword 'question'
     $('answer_1').innerHTML = question['answer_1'];
@@ -88,10 +90,12 @@ function answer(selection) { // answer that you choose
 
   if (selectedQuestionNumber == question['right_answer']) {
     $(selection).parentNode.classList.add('bg-success');
+    AUDIO_SUCCESS_SHORT.play();
     rightAnswers++;
   } else {
     $(selection).parentNode.classList.add('bg-danger');
     $(idRightAnswer).parentNode.classList.add('bg-success');
+    AUDIO_FAILED_SHORT.play();
   }
   $('button').disabled = false;
 }
@@ -114,6 +118,36 @@ function resetAnswers() {
   $('answer_4').parentNode.classList.remove('bg-danger');
 }
 
-function endScreen() {
+function showEndScreen() {
+  $('endScreen').style = '';
+  $('quizBody').style = 'display: none;';
+  $('quizImg').src = './img/trophy.png';
+  success();
+}
 
+function progress() {
+  let percent = currentQuestion / questions.length;
+  percent = Math.floor(percent * 100)
+  $('progressBar').style.width = `${percent}%`;
+  $('progressBar').innerHTML = `${percent}%`;
+}
+
+function reGame() {
+  $('quizImg').src = './img/riddle.jpg'
+  $('endScreen').style = "display: none;"
+  $('quizBody').style = "";
+  currentQuestion = 0;
+  rightAnswers = 0;
+  init()
+}
+
+function success() {
+  if (rightAnswers >= 3) {
+    AUDIO_SUCCESS.play();
+    $('endText').innerHTML = 'Spitze!!! Du bist Weltenklasse!'
+  } else {
+    $('quizImg').src = './img/failed.png'
+    $('endText').innerHTML = 'Du noch einen langen Weg vor dir!'
+    AUDIO_FAILED.play();
+  };
 }
