@@ -4,10 +4,10 @@
 [x] add smaller cards for answers
 [x] add Button
 [x] right answer, false answer - Logic
-[] show right answer if 1 wrong try
-[] disable/enable Button
+[x] show right answer if 1 wrong try
+[x] disable/enable Button
 [] show right answer if 2 wrong trys
-[] Endscreen Design
+[x] Endscreen Design
 [] Progress bar
 [] retry
 [] game sound
