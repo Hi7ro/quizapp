@@ -9,8 +9,8 @@
 [] show right answer if 2 wrong trys
 [x] Endscreen Design
 [X] Progress bar
-[] retry
-[] game sound
+[x] retry
+[x] game sound
 
 ##############################################
 

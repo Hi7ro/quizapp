@@ -55,7 +55,8 @@ let AUDIO_SUCCESS_SHORT = new Audio('./assets/shortSuccess.mp3')
 let AUDIO_FAILED_SHORT = new Audio('./assets/wrong.mp3')
 
 function $(id) {
-  return document.getElementById(id); // to shorten the document.get.. instead write $('id')
+  // to shorten the document.getElement(..) Text instead $('id')
+  return document.getElementById(id);
 }
 
 function init() {
@@ -64,22 +65,32 @@ function init() {
 }
 
 function showQuestion() {
-  let question = questions[currentQuestion]; // From Object the first object 
-  if (currentQuestion >= questions.length) {
+  if (gameIsOver()) {
     showEndScreen();
-    progress();
   } else {
+    updatedQuestions();
     progress();
-    $('questionNumber').innerHTML = currentQuestion + 1;
-    $('question').innerHTML = question['question']; // DOM Element, First question = the first Object/object keyword 'question'
-    $('answer_1').innerHTML = question['answer_1'];
-    $('answer_2').innerHTML = question['answer_2'];
-    $('answer_3').innerHTML = question['answer_3'];
-    $('answer_4').innerHTML = question['answer_4'];
   };
+  currentState();
+}
 
+function currentState() {
   $('questionNumberAnswerd').innerHTML = rightAnswers;
   $('fromQuestions').innerHTML = questions.length;
+}
+
+function updatedQuestions() {
+  let question = questions[currentQuestion];
+  $('questionNumber').innerHTML = currentQuestion + 1;
+  $('question').innerHTML = question['question'];
+  $('answer_1').innerHTML = question['answer_1'];
+  $('answer_2').innerHTML = question['answer_2'];
+  $('answer_3').innerHTML = question['answer_3'];
+  $('answer_4').innerHTML = question['answer_4'];
+}
+
+function gameIsOver() {
+  return currentQuestion >= questions.length;
 }
 
 function answer(selection) { // answer that you choose
@@ -123,6 +134,7 @@ function showEndScreen() {
   $('quizBody').style = 'display: none;';
   $('quizImg').src = './img/trophy.png';
   success();
+  progress();
 }
 
 function progress() {
