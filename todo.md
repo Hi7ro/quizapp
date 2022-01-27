@@ -19,3 +19,12 @@
 [] responsive
 [] less than 50% Screen
 [] more quiz themes
+[] exit game button
+
+##############################################
+todo for the Menu;
+
+[] make Card
+[] 3-4 quizgames
+[] img?
+[] start Game onChange
