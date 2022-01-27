@@ -22,17 +22,14 @@
   <!------------------- navbar------------------->
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Quizapp</a>
+      <a class="navbar-brand" href="index.html">Quizapp</a>
     </div>
   </nav>
   <!-----------------x- navbar-x----------------->
 
   <!------------------- main-section ------------------->
   <div class="container">
-
-
     <div class="card mainQuiz">
-
       <img id="quizImg" src="./img/riddle.jpg" class="card-img-top" alt="...">
       <div class="progress">
         <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;">
@@ -42,8 +39,6 @@
       <div id="endScreen" class="card-body text-center" style="display: none;">
         <h3 class="mb-4">Du hast es bis zum Ende Geschafft!</h3>
         <span id="endText" class="mb-2"></span>
-        <div>
-        </div>
         <span class="text-center mb-4">Du hast <b id="questionNumberAnswerd">xxx</b> von <b id="fromQuestions">xxx</b>
           Fragen richtig beantwortet.</span>
         <button id="restart" class="btn btn-dark" onclick="reGame()">restart</button>
@@ -90,8 +85,6 @@
     </div>
 
   </div>
-
-
 
   <script src="./main.js"></script>
 </body>
