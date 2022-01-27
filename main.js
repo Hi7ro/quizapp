@@ -159,7 +159,7 @@ function success() {
     $('endText').innerHTML = 'Spitze!!! Du bist Weltenklasse!'
   } else {
     $('quizImg').src = './img/failed.png'
-    $('endText').innerHTML = 'Du noch einen langen Weg vor dir!'
+    $('endText').innerHTML = 'Du hast noch einen langen Weg vor dir!'
     AUDIO_FAILED.play();
   };
 }

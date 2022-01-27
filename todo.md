@@ -7,13 +7,15 @@
 [x] show right answer if 1 wrong try
 [x] disable/enable Button
 [] show right answer if 2 wrong trys
-[x] Endscreen Design
+[x] endscreen Design
 [X] Progress bar
 [x] retry
 [x] game sound
 
 ##############################################
 
-[] 0 points - Noob Screen
+[x] title icon
+[x] 0 points - Noob Screen
+[] responsive
 [] less than 50% Screen
 [] more quiz themes
