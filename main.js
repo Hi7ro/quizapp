@@ -38,7 +38,7 @@ let questions = [
   },
 
   {
-    "question": "Die meisten diser Begriffe stehen in direkter Verbindung zu Funktionen. Welcher Nicht?",
+    "question": "Die meisten dieser Begriffe stehen in direkter Verbindung zu Funktionen. Welcher Nicht?",
     "answer_1": "Rückgabewert",
     "answer_2": "Public/private",
     "answer_3": "Argument",
@@ -132,7 +132,7 @@ function resetAnswers() {
 function showEndScreen() {
   $('endScreen').style = '';
   $('quizBody').style = 'display: none;';
-  $('quizImg').src = './img/trophy.png';
+
   success();
   progress();
 }
@@ -156,6 +156,7 @@ function reGame() {
 function success() {
   if (rightAnswers >= 3) {
     AUDIO_SUCCESS.play();
+    $('quizImg').src = './img/trophy.png';
     $('endText').innerHTML = 'Spitze!!! Du bist Weltenklasse!'
   } else {
     $('quizImg').src = './img/failed.png'
